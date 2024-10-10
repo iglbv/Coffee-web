@@ -4,9 +4,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'coffee': '#5C3825',
-        'latte': '#8F6331',
-        'dust': '#C7AA92',
+        'coffee': '#8C735B',
+        'latte': '#F5E7D8',
+        'dust': '#FDF5E6',
+        'gold': '#C78F2D'
       },
     },
   },
