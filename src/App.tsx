@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import GreetingForm from './components/GreetingForm';
 import CoffeeShop from './components/CoffeeShop';
+import AboutUs from './components/AboutUs';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -20,6 +21,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<GreetingForm handleSubmit={handleSubmit} />} />
             <Route path="/coffee-shop" element={<CoffeeShop />} />
+            <Route path="/about-us" element={<AboutUs />} />
           </Routes>
         </main>
         <Footer />

@@ -57,3 +57,67 @@ main {
 .transition {
   transition: all 0.3s ease-in-out;
 }
+
+.about-us-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+ }
+ 
+ .about-us-section {
+  padding: 40px;
+  text-align: center;
+ }
+ 
+ .about-us-section h2 {
+  color: #8C735B;
+  margin-bottom: 20px;
+  font-size: 2.4rem;
+  font-weight: bold;
+ }
+ 
+ .about-us-section {
+  margin-top: 15px;
+  color: #333;
+  line-height: 1.6;
+  font-size: 1.5rem;
+ }
+ 
+ .team-members {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+ }
+ 
+ .team-member {
+  text-align: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 250px;
+  min-height: 300px;
+ }
+ 
+ .team-photo {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: cover;
+  margin-bottom: 10px;
+ }
+ 
+ .team-member h3 {
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+ }
+ 
+ .team-member p {
+  font-size: 1rem;
+ }
+ 
