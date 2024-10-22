@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
@@ -8,8 +8,13 @@ interface Props {
 }
 
 const GreetingForm: React.FC<Props> = ({ handleSubmit }) => {
-    const [name, setName] = useState('');
     const navigate = useNavigate();
+
+    const handleLogin = (values: { name: string }) => {
+        handleSubmit(values);
+        localStorage.setItem('userName', values.name);
+        navigate('/coffee-shop');
+    };
 
     return (
         <div className="bg-white p-10 rounded-lg shadow-2xl mx-auto max-w-md flex flex-col items-center">
@@ -21,14 +26,11 @@ const GreetingForm: React.FC<Props> = ({ handleSubmit }) => {
             </p>
 
             <Formik
-                initialValues={{ name: "" }}
+                initialValues={{ name: '' }}
                 validationSchema={Yup.object({
                     name: Yup.string().required('Введите ваше имя!'),
                 })}
-                onSubmit={(values) => {
-                    handleSubmit(values);
-                    navigate('/coffee-shop');
-                }}
+                onSubmit={handleLogin}
             >
                 {({ isSubmitting }) => (
                     <Form className="flex flex-col w-full">
@@ -40,11 +42,12 @@ const GreetingForm: React.FC<Props> = ({ handleSubmit }) => {
                                 type="text"
                                 id="name"
                                 name="name"
-                                className="px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:border-coffee text-gray-800 focus:ring-2 focus:ring-coffee focus:ring-opacity-50" />
+                                className="px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:border-coffee text-gray-800 focus:ring-2 focus:ring-coffee focus:ring-opacity-50"
+                            />
                             <ErrorMessage
                                 name="name"
                                 component="div"
-                                className='text-red-500 text-sm mt-1'
+                                className="text-red-500 text-sm mt-1"
                             />
                         </div>
                         <button
@@ -59,14 +62,8 @@ const GreetingForm: React.FC<Props> = ({ handleSubmit }) => {
                     </Form>
                 )}
             </Formik>
-
-            {name && (
-                <p className="text-lg text-coffee mt-4 text-center">
-                    Приятно познакомиться, {name}!
-                </p>
-            )}
         </div>
-    )
-}
+    );
+};
 
 export default GreetingForm;

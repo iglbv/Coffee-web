@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import espresso from '../assets/img/espresso.jpg'
 import americano from '../assets/img/americano.jpeg'
 import flat_white from '../assets/img/flat_white.jpg'
@@ -51,12 +51,6 @@ const coffees: Coffee[] = [
 ]
 
 const CoffeeShop = () => {
-    const [selectedCoffee, setSelectedCoffee] = useState<Coffee | null>(null);
-
-    const handleCoffeeSelect = (coffee: Coffee) => {
-        setSelectedCoffee(coffee)
-    }
-
     return (
         <div className="container mx-auto px-4">
             <h1 className="text-3xl font-bold text-coffee mb-4 text-center">Наш ассортимент</h1>
@@ -64,23 +58,12 @@ const CoffeeShop = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {coffees.map((coffee, index) => (
                     <div key={index} className="coffee-card rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 ease-in-out">
-                        <button onClick={() => handleCoffeeSelect(coffee)} className="w-full flex flex-col items-center">
-                            <img src={coffee.image} alt={coffee.name} className="coffee-image rounded-lg" />
-                            <h3 className="text-xl font-bold text-coffee mt-4">{coffee.name}</h3>
-                        </button>
+                        <img src={coffee.image} alt={coffee.name} className="coffee-image rounded-lg" />
+                        <h3 className="text-xl font-bold text-coffee mt-4">{coffee.name}</h3>
                         <p className="text-gray-600 mt-2">{coffee.description}</p>
                     </div>
                 ))}
             </div>
-
-            {selectedCoffee && (
-                <div className="bg-white p-4 rounded-lg shadow-md mt-8">
-                    <h2 className="text-2xl font-bold text-coffee mb-2">Вы выбрали:</h2>
-                    <h3 className="text-xl font-bold text-coffee mb-2">{selectedCoffee.name}</h3>
-                    <p className="text-gray-600 mb-2">{selectedCoffee.description}</p>
-                    <img src={selectedCoffee.image} alt={selectedCoffee.name} className="coffee-image rounded-lg mt-4" />
-                </div>
-            )}
         </div>
     );
 };
