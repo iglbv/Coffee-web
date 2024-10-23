@@ -5,6 +5,7 @@ import CoffeeShop from './components/CoffeeShop';
 import AboutUs from './components/AboutUs';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import NotFound from './components/NotFound';
 
 const App: React.FC = () => {
   const [name, setName] = useState('');
@@ -43,6 +44,8 @@ const App: React.FC = () => {
               )
               }
             />
+            <Route
+            path="*" element={<NotFound />} /> {}
           </Routes>
         </main>
         <Footer />
