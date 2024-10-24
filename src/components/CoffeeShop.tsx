@@ -101,10 +101,11 @@ const CoffeeShop = () => {
     );
 
     return (
-        <div className="container mx-auto px-4">
-            <h1 className="text-3xl font-bold text-coffee mb-4 text-center">
+        <div className="container mx-auto px-4 bg-secondary text-text">
+            <h1 className="text-3xl font-bold text-accent mb-4 text-center">
                 Наш ассортимент
             </h1>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {coffees.map((coffee, index) => (
                     <div
@@ -127,7 +128,7 @@ const CoffeeShop = () => {
                         </p>
                         <div className="mt-4 flex justify-center">
                             <button
-                                className="px-4 py-2 bg-gold text-white rounded-md hover:bg-coffee focus:outline-none focus:ring-2 focus:ring-gold"
+                                className="px-4 py-2 bg-accent text-white rounded-md hover:bg-primary focus:outline-none focus:ring-2 focus:ring-accent; "
                                 onClick={() => addToCart(coffee)}
                             >
                                 Добавить

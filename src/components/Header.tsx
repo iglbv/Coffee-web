@@ -10,18 +10,25 @@ const Header: React.FC = () => {
     };
 
     return (
-        <header className="bg-coffee text-white py-1 px-4 shadow-md">
+        <header className="bg-primary text-light-text py-1 px-4 shadow-md">
             <div className="container mx-auto flex justify-between items-center">
-                <Link to="/coffee-shop" className="text-2xl font-bold hover:text-gold">
+                <Link to="/coffee-shop" className="text-2xl font-bold hover:text-accent">
                     <h1 className="text-2xl font-bold">Coffee Shop Radiovolna</h1>
                 </Link>
                 <nav className="flex items-center space-x-4">
                     {userName ? (
                         <>
                             <p className="text-lg">Привет, {userName}!</p>
-                            <Link to="/coffee-shop" className="hover:text-gold">Кофейня</Link>
-                            <Link to="/about-us" className="hover:text-gold">О нас</Link>
-                            <Link to="/" onClick={handleLogout} className="hover:text-gold">
+                            <Link to="/coffee-shop"
+                                className="text-gold hover:underline hover:text-accent">
+                                Кофейня
+                            </Link>
+                            <Link to="/about-us"
+                                className="text-gold hover:underline hover:text-accent">
+                                О нас
+                            </Link>
+                            <Link to="/" onClick={handleLogout}
+                                className="text-gold hover:underline hover:text-accent">
                                 Выйти
                             </Link>
                         </>

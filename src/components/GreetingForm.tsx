@@ -17,7 +17,7 @@ const GreetingForm: React.FC<Props> = ({ handleSubmit }) => {
     };
 
     return (
-        <div className="bg-white p-10 rounded-lg shadow-2xl mx-auto max-w-md flex flex-col items-center">
+        <div className="bg-secondary p-10 rounded-lg shadow-2xl mx-auto max-w-md flex flex-col items-center text-text">
             <h1 className="text-4xl font-bold mb-4 text-center">
                 Добро пожаловать в нашу кофейню!
             </h1>
@@ -52,9 +52,7 @@ const GreetingForm: React.FC<Props> = ({ handleSubmit }) => {
                         </div>
                         <button
                             type="submit"
-                            className="bg-coffee text-white px-6 py-3 rounded-md font-bold hover:bg-latte hover:text-white 
-                focus:outline-none focus:ring-2 
-                focus:ring-coffee focus:ring-opacity-50 disabled:opacity-50 transition duration-300 ease-in-out"
+                            className="bg-accent text-light-text px-6 py-3 rounded-md font-bold hover:bg-primary hover:text-light-text focus:outline-none focus:ring-2 focus:ring-accent disabled:opacity-50 transition duration-300 ease-in-out"
                             disabled={isSubmitting}
                         >
                             Хочу сделать заказ!
@@ -62,7 +60,7 @@ const GreetingForm: React.FC<Props> = ({ handleSubmit }) => {
                     </Form>
                 )}
             </Formik>
-        </div>
+        </div >
     );
 };
 
