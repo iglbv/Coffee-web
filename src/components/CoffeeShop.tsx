@@ -212,7 +212,7 @@ const CoffeeShop = () => {
                                                         item.coffee.name
                                                     )
                                                 }
-                                                className="bg-red-500 text-white font-bold py-1 px-2 rounded-md ml-2"
+                                                className="bg-red text-white font-bold py-1 px-2 rounded-md ml-2"
                                             >
                                                 Удалить
                                             </button>
@@ -229,7 +229,7 @@ const CoffeeShop = () => {
                             </p>
                             <button
                                 onClick={handleCheckout}
-                                className="bg-green-500 text-white font-bold py-2 px-4 rounded-md"
+                                className="bg-green text-white font-bold py-2 px-4 rounded-md ml-4"
                             >
                                 Оформить заказ
                             </button>

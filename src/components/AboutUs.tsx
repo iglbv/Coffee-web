@@ -3,6 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import default_profile_picture from '../assets/img/default_profile_picture.jpg';
+import { Link } from "react-router-dom";
 
 const AboutUs: React.FC = () => {
     const teamMembers = [
@@ -71,7 +72,7 @@ const AboutUs: React.FC = () => {
         slidesToScroll: 1,
         arrows: false,
         autoplay: true,
-        autoplaySpeed: 5000,
+        autoplaySpeed: 7000,
         centerMode: true,
         centerPadding: '50px',
     };
@@ -83,11 +84,21 @@ const AboutUs: React.FC = () => {
                     <div key={index} className="about-us-section text-center">
                         <h2 className="text-3xl font-bold mb-4 text-accent">{section.title}</h2>
                         {section.content}
+                        {section.title === "О нас" && (
+                            <div className="mt-8 flex justify-center gap-6">
+                                <Link to="/about-us/contacts" className="bg-accent hover:bg-text transition duration-300 ease-in-out px-6 py-4 text-light-text rounded-md">
+                                    Контакты
+                                </Link>
+                                <Link to="/about-us/feedback" className="bg-accent hover:bg-text transition duration-300 ease-in-out px-6 py-4 text-light-text rounded-md">
+                                    Отзывы
+                                </Link>
+                            </div>
+                        )}
                     </div>
                 ))}
             </Slider>
         </div>
     );
-}
+};
 
 export default AboutUs;

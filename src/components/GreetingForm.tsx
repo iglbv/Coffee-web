@@ -47,7 +47,7 @@ const GreetingForm: React.FC<Props> = ({ handleSubmit }) => {
                             <ErrorMessage
                                 name="name"
                                 component="div"
-                                className="text-red-500 text-sm mt-1"
+                                className="text-red text-sm mt-1"
                             />
                         </div>
                         <button
