@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import GreetingForm from './components/GreetingForm';
-import CoffeeShop from './components/CoffeeShop';
+import CoffeeShop from './components/CoffeeShop/CoffeeShop';
 import AboutUs from './components/AboutUs';
 import Header from './components/Header';
 import Footer from './components/Footer';
