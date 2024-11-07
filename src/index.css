@@ -180,3 +180,19 @@ button {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.add-to-cart-animation {
+    animation: pulse 0.4s ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+} 

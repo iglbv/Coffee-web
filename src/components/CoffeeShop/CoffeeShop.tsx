@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Coffee, Topping, coffees } from '../../models/CoffeeData';
 import CoffeeCard from './CoffeeCard';
@@ -7,6 +7,17 @@ import Cart from './Cart';
 const CoffeeShop: React.FC = () => {
   const [cart, setCart] = useState<{ coffee: Coffee; size: string; toppings: Topping[]; quantity: number }[]>([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
+  useEffect(() => {
+    const storedCart = localStorage.getItem('cart');
+    if (storedCart) {
+      setCart(JSON.parse(storedCart));
+    }
+  }, []);
 
   const addToCart = (coffee: Coffee, size: string, selectedToppings: Topping[]) => {
     const existingItem = cart.find(

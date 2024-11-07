@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Coffee, Topping, toppings } from '../../models/CoffeeData';
 
 interface CoffeeCardProps {
@@ -9,9 +9,16 @@ interface CoffeeCardProps {
 const CoffeeCard: React.FC<CoffeeCardProps> = ({ coffee, addToCart }) => {
     const [selectedSize, setSelectedSize] = useState(coffee.sizes[0].name);
     const [selectedToppings, setSelectedToppings] = useState<Topping[]>([]);
+    const addToCartButtonRef = useRef<HTMLButtonElement>(null);
 
     const handleAddToCart = () => {
         addToCart(coffee, selectedSize, selectedToppings);
+        if (addToCartButtonRef.current) {
+            addToCartButtonRef.current.classList.add('add-to-cart-animation');
+            setTimeout(() => {
+                addToCartButtonRef.current?.classList.remove('add-to-cart-animation');
+            }, 500);
+        }
     };
 
     return (
@@ -23,7 +30,7 @@ const CoffeeCard: React.FC<CoffeeCardProps> = ({ coffee, addToCart }) => {
                 alt={coffee.name}
                 className="coffee-image rounded-lg"
             />
-            <h3 className="text-xl font-bold text-coffee mt-4">
+            <h3 className="text-xl font-bold mt-4">
                 {coffee.name}
             </h3>
             <div className="coffee-description text-gray-600 mt-2">
@@ -79,6 +86,7 @@ const CoffeeCard: React.FC<CoffeeCardProps> = ({ coffee, addToCart }) => {
             </div>
             <div className="mt-4 flex justify-center">
                 <button
+                    ref={addToCartButtonRef}
                     className="px-4 py-2 bg-accent text-white rounded-md hover:bg-primary focus:outline-none focus:ring-2 focus:ring-accent"
                     onClick={handleAddToCart}
                 >

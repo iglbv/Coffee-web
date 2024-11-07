@@ -35,7 +35,7 @@ const Cart: React.FC<CartProps> = ({ cart, removeFromCart, handleCheckout }) => 
             {cart.length > 0 && (
                 <button
                     onClick={() => setIsCartOpen(true)}
-                    className="fixed bottom-8 right-8 px-4 py-2 bg-gold text-white rounded-md hover:bg-coffee focus:outline-none focus:ring-2 focus:ring-gold"
+                    className="fixed bottom-8 right-8 px-4 py-2 bg-accent text-white rounded-md hover:bg-primary focus:outline-none focus:ring-2 focus:ring-accent"
                 >
                     Открыть корзину
                 </button>
@@ -50,7 +50,7 @@ const Cart: React.FC<CartProps> = ({ cart, removeFromCart, handleCheckout }) => 
                         className="bg-white rounded-lg shadow-lg p-8 relative"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <h2 className="text-2xl font-bold text-coffee mb-2">
+                        <h2 className="text-2xl font-bold text-accent mb-2">
                             Ваша корзина:
                         </h2>
                         <button
