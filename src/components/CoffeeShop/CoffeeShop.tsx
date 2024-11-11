@@ -9,15 +9,15 @@ const CoffeeShop: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
-
-  useEffect(() => {
     const storedCart = localStorage.getItem('cart');
     if (storedCart) {
       setCart(JSON.parse(storedCart));
     }
   }, []);
+
+  const saveCartToLocalStorage = () => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  };
 
   const addToCart = (coffee: Coffee, size: string, selectedToppings: Topping[]) => {
     const existingItem = cart.find(
@@ -67,6 +67,10 @@ const CoffeeShop: React.FC = () => {
     navigate('/');
   };
 
+  useEffect(() => {
+    saveCartToLocalStorage();
+  }, [cart]);
+  
   return (
     <div className="container mx-auto px-4 bg-secondary text-text">
       <h1 className="text-3xl font-bold text-accent mb-4 text-center">

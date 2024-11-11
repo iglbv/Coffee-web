@@ -8,13 +8,11 @@ const Feedback: React.FC = () => {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        const username = localStorage.getItem('userName');
 
-        if (username && feedback.trim() !== '') {
+        if (feedback.trim() !== '') {
             setReviews([
                 ...reviews,
                 {
-                    username: username,
                     text: feedback,
                 },
             ]);
@@ -62,7 +60,7 @@ const Feedback: React.FC = () => {
                                 className="w-10 h-10 rounded-full"
                             />
                             <div>
-                                <strong>{review.username}:</strong> {review.text}
+                                <strong>{'Неизвестный пользователь'}:</strong> {review.text}
                                 <button
                                     className="ml-4 text-light-text hover:bg-red px-2 py-1 rounded"
                                     onClick={() => handleDeleteReview(index)}
