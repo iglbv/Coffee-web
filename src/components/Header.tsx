@@ -2,10 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
-    const userName = localStorage.getItem('userName');
+    const username = localStorage.getItem('username');
 
     const handleLogout = () => {
-        localStorage.removeItem('userName');
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
         window.location.reload();
     };
 
@@ -15,27 +16,26 @@ const Header: React.FC = () => {
                 <Link to="/coffee-shop" className="text-2xl font-bold hover:text-accent">
                     <h1 className="text-2xl font-bold">Coffee Shop Radiovolna</h1>
                 </Link>
-                <nav className="flex items-center space-x-4">
-                    {userName ? (
-                        <>
-                            <p className="text-lg">Привет, {userName}!</p>
-                            <Link to="/coffee-shop"
-                                className="text-gold hover:underline hover:text-accent">
-                                Кофейня
-                            </Link>
-                            <Link to="/about-us"
-                                className="text-gold hover:underline hover:text-accent">
-                                О нас
-                            </Link>
-                            <Link to="/" onClick={handleLogout}
-                                className="text-gold hover:underline hover:text-accent">
-                                Выйти
-                            </Link>
-                        </>
-                    ) : (
-                        <></>
-                    )}
-                </nav>
+                {localStorage.getItem('token') ? (
+                    <nav className="flex items-center space-x-4">
+                        {username && (
+                            <span>
+                                Привет, {username}!
+                            </span>
+                        )}
+                        <Link to="/coffee-shop" className="hover:underline hover:text-accent">
+                            Кофейня
+                        </Link>
+                        <Link to="/about-us" className="hover:underline hover:text-accent">
+                            О нас
+                        </Link>
+                        <span onClick={handleLogout} className="hover:underline hover:text-accent cursor-pointer">
+                            Выйти
+                        </span>
+                    </nav>
+                ) : (
+                    <></>
+                )}
             </div>
         </header>
     );
