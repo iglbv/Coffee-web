@@ -41,7 +41,7 @@ const Register: React.FC = () => {
             });
 
             if (response.ok) {
-                navigate('/login');
+                navigate('/');
             } else {
                 setUsernameError('Ошибка регистрации.');
             }

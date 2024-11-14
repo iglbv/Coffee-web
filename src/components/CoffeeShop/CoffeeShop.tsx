@@ -58,19 +58,36 @@ const CoffeeShop: React.FC = () => {
     );
   };
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     if (cart.length === 0) {
       alert('Ваша корзина пуста!');
       return;
     }
-    setCart([]);
-    navigate('/');
+
+    try {
+      const response = await fetch('http://localhost:3001/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(cart),
+      });
+
+      if (response.ok) {
+        console.log('Заказ отправлен успешно!');
+        setCart([]);
+        navigate('/');
+      } else {
+        throw new Error(`Ошибка отправки заказа: ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Ошибка отправки заказа:', error);
+      alert('Ошибка отправки заказа. Пожалуйста, попробуйте снова.');
+    }
   };
 
   useEffect(() => {
     saveCartToLocalStorage();
   }, [cart]);
-  
+
   return (
     <div className="container mx-auto px-4 bg-secondary text-text">
       <h1 className="text-3xl font-bold text-accent mb-4 text-center">
